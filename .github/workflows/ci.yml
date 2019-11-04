@@ -25,7 +25,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           set -x
-          if [[ -z ${{ github.event_name }} ]]; then
+          if [[ "${{ github.event_name }}" = "pull_request" ]]; then
             echo "found it"
           else
             echo "not a pull-request"
