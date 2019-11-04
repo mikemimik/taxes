@@ -1,0 +1,41 @@
+---
+name: Testing CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Testing Env
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        node-version: [10.x, 12.x]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Comment Script
+        uses: actions/github-script@0.2.0
+        if: github.event_name == 'pull_request'
+        env:
+          PR_ID: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.event.repository.owner.login }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            'use strict'
+            const { PR_ID, REPO, OWNER } = process.env
+            const comments = await github
+              .paginate("GET /repos/:owner/:repo/pulls/:pull_number/comments", {
+                owner: OWNER,
+                repo: REPO,
+                pull_number: PR_ID
+              });
+            console.log('comments:', comments)
