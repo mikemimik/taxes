@@ -31,12 +31,7 @@ jobs:
           github-token: ${{ github.token }}
           script: |
             'use strict'
-            const {
-              PR_ID,
-              REPO,
-              OWNER
-            } = process.env
-            const fs = require('fs')
+            const { PR_ID, REPO, OWNER } = process.env
             const comments = await github
               .paginate("GET /repos/:owner/:repo/pulls/:pull_number/comments", {
                 owner: OWNER,
