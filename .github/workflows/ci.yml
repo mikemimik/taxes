@@ -25,6 +25,8 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           set -x
-          printenv
-          echo "${{ secrets.GITHUB_TOKEN }}"
-          echo "${GITHUB_CONTEXT}"
+          if [[ -z ${{ github.event_name }} ]]; then
+            echo "found it"
+          else
+            echo "not a pull-request"
+          fi
