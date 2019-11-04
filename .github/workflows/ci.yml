@@ -20,11 +20,25 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run stuff
+      - name: Comment Script
+        uses: actions/github-script@0.2.0
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          set -x
-          if [[ "${{ github.event_name }}" = "pull_request" ]]; then
-            echo "PR: ${{ github.event.pull_request.number }}"
-          fi
+          PR_ID: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.event.repository.owner.login }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            'use strict'
+            const {
+              PR_ID,
+              REPO,
+              OWNER
+            } = process.env
+            const issues = await github
+              .paginate("GET /repos/:owner/:repo/pulls/:pull_number/comments", {
+                owner: OWNER,
+                repo: REPO,
+                pull_number: PR_ID
+              });
+            console.log('issues:', issues)
