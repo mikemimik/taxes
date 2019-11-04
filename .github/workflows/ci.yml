@@ -26,7 +26,5 @@ jobs:
         run: |
           set -x
           if [[ "${{ github.event_name }}" = "pull_request" ]]; then
-            echo "found it"
-          else
-            echo "not a pull-request"
+            echo "PR: ${{ github.event.pull_request.number }}"
           fi
