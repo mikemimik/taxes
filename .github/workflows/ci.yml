@@ -21,7 +21,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run stuff
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           set -x
           printenv
           echo "${{ secrets.GITHUB_TOKEN }}"
+          echo "${GITHUB_CONTEXT}"
