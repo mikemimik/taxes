@@ -1,0 +1,26 @@
+---
+name: Testing CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Testing Env
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        node-version: [10.x, 12.x]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Run stuff
+        run: |
+          set -x
+          printenv
