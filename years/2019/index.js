@@ -27,7 +27,15 @@ exports.provincial = {
     ['31984', 0.098],
     ['31985', 0.138],
     ['+63969', 0.167]
+  ],
+  ns: [
+    ['29590', 0.0879],
+    ['29590', 0.1495],
+    ['33820', 0.1667],
+    ['57000', 0.175],
+    ['+150000', 0.21]
   ]
 }
 exports.provincial.labrador = exports.provincial.newfoundland
 exports.provincial['prince edward island'] = exports.provincial.pei
+exports.provincial['nova scotia'] = exports.provincial.ns
