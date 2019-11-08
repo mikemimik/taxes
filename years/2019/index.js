@@ -51,6 +51,13 @@ exports.provincial = {
     ['45225', 0.105],
     ['83989', 0.125],
     ['+129214', 0.145]
+  ],
+  alberta: [
+    ['131220', 0.10],
+    ['26244', 0.12],
+    ['52488', 0.13],
+    ['104976', 0.14],
+    ['+314928', 0.15]
   ]
 }
 exports.provincial.labrador = exports.provincial.newfoundland
