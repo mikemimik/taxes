@@ -15,5 +15,13 @@ exports.provincial = {
     ['62187', 0.1116],
     ['70000', 0.1216],
     ['+220000', 0.1316]
+  ],
+  newfoundland: [
+    ['37591', 0.087],
+    ['37590', 0.145],
+    ['59043', 0.158],
+    ['53689', 0.173],
+    ['+187913', 0.183]
   ]
 }
+exports.provincial.labrador = exports.provincial.newfoundland
