@@ -58,9 +58,18 @@ exports.provincial = {
     ['52488', 0.13],
     ['104976', 0.14],
     ['+314928', 0.15]
+  ],
+  bc: [
+    ['40707', 0.0506],
+    ['40709', 0.077],
+    ['12060', 0.105],
+    ['20030', 0.1229],
+    ['40394', 0.147],
+    ['+153900', 0.168]
   ]
 }
 exports.provincial.labrador = exports.provincial.newfoundland
 exports.provincial['prince edward island'] = exports.provincial.pei
 exports.provincial['nova scotia'] = exports.provincial.ns
 exports.provincial['new brunswick'] = exports.provincial.nb
+exports.provincial['british columbia'] = exports.provincial.bc
