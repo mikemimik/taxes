@@ -22,6 +22,12 @@ exports.provincial = {
     ['59043', 0.158],
     ['53689', 0.173],
     ['+187913', 0.183]
+  ],
+  pei: [
+    ['31984', 0.098],
+    ['31985', 0.138],
+    ['+63969', 0.167]
   ]
 }
 exports.provincial.labrador = exports.provincial.newfoundland
+exports.provincial['prince edward island'] = exports.provincial.pei
